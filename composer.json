@@ -1,0 +1,20 @@
+{
+  "name": "amazee/amazeeio-gdpr-dump",
+  "type": "project",
+  "autoload": {
+    "psr-4": {
+      "amazee\\AmazeeioGdprDump\\": "src/"
+    }
+  },
+  "require": {
+    "machbarmacher/gdpr-dump": "dev-master"
+  },
+  "extra": {
+    "patches": {
+      "ifsnop/mysqldump-php": {
+        "Add getter": "https://patch-diff.githubusercontent.com/raw/ifsnop/mysqldump-php/pull/137.patch"
+      }
+    }
+  },
+  "minimum-stability": "dev"
+}
