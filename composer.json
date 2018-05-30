@@ -7,7 +7,7 @@
     }
   },
   "bin": [
-    "mysqldump"
+    "amazeeiogdprdump"
   ],
   "require": {
     "machbarmacher/gdpr-dump": "dev-master"
