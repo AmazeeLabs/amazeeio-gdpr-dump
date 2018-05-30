@@ -6,9 +6,6 @@
       "amazee\\AmazeeioGdprDump\\": "src/"
     }
   },
-  "config": {
-    "bin-dir": "scripts"
-  },
   "bin": [
     "mysqldump"
   ],
