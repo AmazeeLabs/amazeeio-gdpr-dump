@@ -1,5 +1,5 @@
 {
-  "name": "amazee/amazeeio-gdpr-dump",
+  "name": "amazeelabs/amazeeio-gdpr-dump",
   "type": "project",
   "autoload": {
     "psr-4": {
