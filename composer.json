@@ -1,11 +1,14 @@
 {
   "name": "amazee/amazeeio-gdpr-dump",
-  "type": "project",
+  "type": "package",
   "autoload": {
     "psr-4": {
       "amazee\\AmazeeioGdprDump\\": "src/"
     }
   },
+  "bin": [
+    "mysqldump"
+  ],
   "require": {
     "machbarmacher/gdpr-dump": "dev-master"
   },
