@@ -1,9 +1,8 @@
-#!/usr/bin/env php
 <?php
 use amazee\AmazeeioGdprDump\DumpCommand;
 use Symfony\Component\Console\Application;
-
-require __DIR__.'/_bootstrap.php';
+require_once(__DIR__ . "/vendor/autoload.php");
+// require __DIR__.'/_bootstrap.php';
 
 $app = new Application('myapp', '1.0 (stable)');
 $command = new DumpCommand();
