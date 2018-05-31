@@ -29,14 +29,31 @@ class DumpCommand extends BaseDumpCommand
 
     protected function getDefaults($extraFile)
     {
-        //TODO: this logic needs to live elsewhere now ...
-        // if(empty($extraFile)) {
-        //     $extraFile = getcwd() . "/.gdpr";
-        // }
-        if(empty($extraFile) && !empty($this->defaultsExtraFile)) {
-            $extraFile = $this->defaultsExtraFile;
+        //TODO: some of this needs to be raised into parent
+        //for now we overwrite it _all_
+        $defaultsFiles[] = '/etc/my.cnf';
+        $defaultsFiles[] = '/etc/mysql/my.cnf';
+        $defaultsFiles[] = getcwd() . "/.gdpr";
+        if ($extraFile) {
+          $defaultsFiles[] = $extraFile;
         }
-        return parent::getDefaults($extraFile);
+
+        if(!empty($this->defaultsExtraFile)) {
+            $defaultsFiles[] = $this->defaultsExtraFile;
+        }
+
+        if ($homeDir = getenv('MYSQL_HOME')) {
+          $defaultsFiles[] = "$homeDir/.my.cnf";
+          $defaultsFiles[] = "$homeDir/.mylogin.cnf";
+        }
+        
+        $config = new ConfigParser();
+        foreach ($defaultsFiles as $defaultsFile) {
+          if (is_readable($defaultsFile)) {
+            $config->addFile($defaultsFile);
+          }
+        }
+        return $config->getFiltered(['client', 'mysqldump']);
     }
 
 }
